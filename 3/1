@@ -1,0 +1,24 @@
+public static int lengthOfLongestSubstring(String s) {
+        int result = 0;
+        if(s == null || s.length() == 0)
+        	return result;
+        for(int i = 0; i < s.length(); i++) {
+        	int temp = longestSubstring(i, s);
+        	if(temp > result)
+        		result = temp;
+        }
+        return result;
+    }
+
+	private static int longestSubstring(int start, String s) {		
+		if(start == s.length() - 1)
+			return 1;
+		for(int i = start + 1; i < s.length(); i++) {
+			for(int j = start; j < i; j++) {
+				if(s.charAt(i) == s.charAt(j)) {
+					return (i - start);
+				}
+			}
+		}
+		return (s.length()-start);
+	}
