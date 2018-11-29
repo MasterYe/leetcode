@@ -1,0 +1,14 @@
+public static int lengthOfLongestSubstring(String s) {
+		int result = 0;
+		int[] array = new int[257];
+		Arrays.fill(array, -1);
+		int left = -1;
+		for(int i = 0; i < s.length(); i++) {
+			if(array[s.charAt(i)] > left) {
+				left = array[s.charAt(i)];
+			}
+			result = Math.max(result, i - left);
+			array[s.charAt(i)] = i;
+		}
+		return result;
+	}
